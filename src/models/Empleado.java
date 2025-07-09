@@ -1,9 +1,17 @@
 package models;
 
+import controllers.EmpleadoDAOHashMap;
+
 public class Empleado implements Comparable<Empleado> {
     private int id;
     private String name;
     private String position;
+
+    public Empleado(int id) {
+        this.id = id;
+        this.name = name;
+        this.position = position;
+    }
 
     public Empleado(int id, String name, String position) {
         this.id = id;
@@ -67,6 +75,11 @@ public class Empleado implements Comparable<Empleado> {
             return comparacionId;
         }
         return name.compareToIgnoreCase(o.name);
+
+    }
+
+    public void add(EmpleadoDAOHashMap empleadoDAOHashMap) {
+        empleadoDAOHashMap.empleados.put(this, this);
 
     }
 

@@ -35,7 +35,7 @@ public class Mapa {
     public void runLinkedHashMap() {
         Map<Integer, String> mapa = new HashMap<>();
 
-        mapa.put(1, "Steve");
+        mapa.put(1, "Steve"); // garantiza el orden de ingreso
         mapa.put(2, "Andres");
         mapa.put(3, "Daniel");
         mapa.put(4, "Erika");
@@ -52,7 +52,8 @@ public class Mapa {
     public void runTreeMap() {
         Map<Integer, String> items = new TreeMap<>();
 
-        items.put(3, "carro");
+        items.put(3, "carro"); // garantiza el orden- primitivas: orden ascendete objeto: el que diga el
+                               // comparador
         items.put(6, "bicicleta");
         items.put(1, "moto");
 
