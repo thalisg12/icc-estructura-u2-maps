@@ -23,5 +23,4 @@ public class ControllerDAOHashMap {
   public void eliminarEmpleado(int id) {
     empleadoDAO.remove(id);
   }
-
 }

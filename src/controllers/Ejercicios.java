@@ -1,6 +1,8 @@
 package controllers;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Ejercicios {
 
@@ -28,8 +30,18 @@ public class Ejercicios {
      * frecuencia.
      */
     public static boolean areAnagrams(String str1, String str2) {
-        throw new UnsupportedOperationException("Not implemented yet");
 
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+
+        char[] r1 = str1.toCharArray();
+        char[] r2 = str2.toCharArray();
+
+        Arrays.sort(r1);
+        Arrays.sort(r2);
+
+        return Arrays.equals(r1, r2);
     }
 
     /*
@@ -48,7 +60,14 @@ public class Ejercicios {
      * Output: null
      */
     public int[] sumatoriaDeDos(int[] nums, int objetivo) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == objetivo) {
+                    return new int[] { i, j };
+                }
+            }
+        }
+        return null;
     }
 
     /**
@@ -60,7 +79,19 @@ public class Ejercicios {
      * Output: {h=1, o=1, l=1, a=1}
      */
     public void contarCaracteres(String texto) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        Map<Character, Integer> frecuencia = new HashMap<>();
+
+        for (int i = 0; i < texto.length(); i++) {
+            char c = texto.charAt(i);
+
+            if (frecuencia.containsKey(c)) {
+                frecuencia.put(c, frecuencia.get(c) + 1);
+            } else {
+                frecuencia.put(c, 1);
+            }
+        }
+
+        System.out.println(frecuencia);
     }
 
     /**
@@ -72,6 +103,23 @@ public class Ejercicios {
      * Output: true
      */
     public boolean sonAnagramas(String palabra1, String palabra2) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (palabra1.length() != palabra2.length()) {
+            return false;
+        }
+
+        int[] conteo = new int[26];
+
+        for (int i = 0; i < palabra1.length(); i++) {
+            conteo[palabra1.charAt(i) - 'a']++;
+            conteo[palabra2.charAt(i) - 'a']--;
+        }
+
+        for (int i = 0; i < 26; i++) {
+            if (conteo[i] != 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

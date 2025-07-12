@@ -8,6 +8,6 @@ public interface EmpleadoDAO {
 
     public void list();
 
-    public void remove(Empleado temporal);
+    public void remove(int id);
 
 }

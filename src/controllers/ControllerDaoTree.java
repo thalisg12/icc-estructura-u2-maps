@@ -1,26 +1,25 @@
 package controllers;
 
+import models.Empleado;
+
 public class ControllerDAOTree {
 
     private EmpleadoDAO empleadoDAO;
 
-    public ControllerDAOHashMap(EmpleadoDAO empleadoDAO) {
-        this.empleadoDAO = new EmpleadoDAOTree();
+    public ControllerDAOTree() {
+        this.empleadoDAO = new EmpleadoDAOTree(); // siempre usa TreeMap
     }
 
-    /**
-     * @param emp
-     */
     public void agregarEmpleado(Empleado emp) {
         empleadoDAO.add(emp);
     }
 
-    public void ListarEmpleados() {
+    public void listarEmpleados() {
         empleadoDAO.list();
     }
 
     public void eliminarEmpleado(int id) {
         empleadoDAO.remove(id);
     }
-
 }
+

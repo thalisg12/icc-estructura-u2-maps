@@ -1,7 +1,5 @@
 package models;
 
-import controllers.EmpleadoDAOHashMap;
-
 public class Empleado implements Comparable<Empleado> {
     private int id;
     private String name;
@@ -9,8 +7,8 @@ public class Empleado implements Comparable<Empleado> {
 
     public Empleado(int id) {
         this.id = id;
-        this.name = name;
-        this.position = position;
+        this.name = "";
+        this.position = "";
     }
 
     public Empleado(int id, String name, String position) {
@@ -34,53 +32,29 @@ public class Empleado implements Comparable<Empleado> {
     @Override
     public String toString() {
         return "ID: " + id + ", Name: " + name + ", Position: " + position;
-
     }
 
     @Override
     public int hashCode() {
-        return id + name.hashCode();
-
+        return Integer.hashCode(id);
     }
 
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
+        if (obj == null || getClass() != obj.getClass())
             return false;
         Empleado other = (Empleado) obj;
-        if (id != other.id)
-            return false;
-        if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        if (position == null) {
-            if (other.position != null)
-                return false;
-        } else if (!position.equals(other.position))
-            return false;
-        return true;
+        return this.id == other.id;
     }
 
     @Override
     public int compareTo(Empleado o) {
-
-        int comparacionId = Integer.compare(id, o.id);
-        if (comparacionId != o.id) {
+        int comparacionId = Integer.compare(this.id, o.id);
+        if (comparacionId != 0) {
             return comparacionId;
         }
-        return name.compareToIgnoreCase(o.name);
-
+        return this.name.compareToIgnoreCase(o.name);
     }
-
-    public void add(EmpleadoDAOHashMap empleadoDAOHashMap) {
-        empleadoDAOHashMap.empleados.put(this, this);
-
-    }
-
 }
